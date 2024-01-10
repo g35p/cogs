@@ -30,16 +30,11 @@ class Avatar(commands.Cog):
             pfp = user.avatar if isinstance(ctx.channel, discord.channel.DMChannel) else user.display_avatar
             fileExt = "gif" if pfp and pfp.is_animated() else "png"
 
-        if pfp:
-            if isinstance(ctx.channel, discord.channel.DMChannel) or ctx.channel.permissions_for(ctx.me).attach_files:
+            if pfp:
                 return await ctx.send(message, file=await pfp.to_file(filename=f"pfp-{user.id}.{fileExt}"))
             elif ctx.guild and ctx.channel.permissions_for(ctx.guild.me).embed_links:
                 return await ctx.send(message + "\n" + user.display_avatar.url)
-            else:
-                return await ctx.send(error(("I do not have permission to attach files or embed links in this channel.")), ephemeral=True)
-        elif ctx.guild and ctx.channel.permissions_for(ctx.guild.me).embed_links:
-            return await ctx.send(message + "\n" + user.display_avatar.url)
-        else:
+
             await ctx.send(error(("I do not have permission to attach files or embed links in this channel.")), ephemeral=True)
 
     async def red_delete_data_for_user(self, **kwargs) -> None:
