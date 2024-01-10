@@ -1,0 +1,7 @@
+{
+  "name": "AvatarCog",
+  "author": "Your Name",
+  "description": "A cog to retrieve user avatars.",
+  "version": "1.0",
+  "cog": true
+}
