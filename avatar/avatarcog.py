@@ -5,16 +5,14 @@ class AvatarCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    async def initialize(self):
-        pass  # You can add any initialization logic here
+    @commands.command(name="avatar", aliases=["av"])
+    async def get_avatar(self, ctx, user: discord.User = None):
+        """Get the avatar of a user."""
+        if user is None:
+            user = ctx.author
 
-    @commands.command()
-    async def avatar(self, ctx, user: discord.User = None):
-        """Retrieve user avatar as an attachment."""
-        user = user or ctx.author
-        avatar_url = user.avatar_url_as(format="png")  # You can change the format if needed
-        avatar_bytes = await avatar_url.read()
+        avatar_url = user.avatar_url
+        await ctx.send(f"Avatar of {user.name}: {avatar_url}")
 
-        file = discord.File(avatar_bytes, filename="avatar.png")
-        await ctx.send(f"Avatar of {user.name}:")
-        await ctx.send(file=file)
+def setup(bot):
+    bot.add_cog(AvatarCog(bot))
