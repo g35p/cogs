@@ -8,20 +8,23 @@ class Avatar(commands.Cog):
 
     @commands.command(name="avatar", description="Get a user's avatar")
     @app_commands.guild_only()
-    async def avatar(self, ctx: commands.Context, user: discord.Member) -> None:
+    async def avatar(self, ctx: commands.Context, user: discord.Member = None) -> None:
         """Returns a user's avatar as an attachment.
 
         User argument can be user mention, nickname, username, user ID.
 
         Defaults to the requester when no argument is supplied."""
+        if user is None:
+            user = ctx.author
+
         message = ("{author} requested the avatar of {name}.").format(author=ctx.author.mention, name=bold(user.display_name))
-        
+
         if user == ctx.author:
             message = ("Here is your avatar, {author}.").format(author=ctx.author.mention)
         elif user == ctx.me:
             message = ("This is _my_ avatar, {author}!").format(author=ctx.author.mention)
         elif isinstance(ctx.channel, discord.DMChannel):
-            message = ("You requested the avatar of {name}.").format(name=bold(user.global_name))
+            message = ("You requested the avatar of {name}.").format(name=bold(user.name))
 
         async with ctx.typing():
             pfp = user.avatar if isinstance(ctx.channel, discord.channel.DMChannel) else user.display_avatar
