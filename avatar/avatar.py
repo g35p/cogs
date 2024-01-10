@@ -2,6 +2,7 @@
 
 # Discord
 import discord
+import asyncio  # Import asyncio for sleep function
 
 # Red
 from redbot.core import commands
@@ -23,5 +24,10 @@ class Avatar(commands.Cog):
             user = author
 
         url = user.avatar.with_static_format("png")
+        message = await ctx.send(f"{user}'s Avatar URL : {url}")
 
-        await ctx.send(f"{user}'s Avatar URL : {url}")
+        # Sleep for 10 seconds, adjust as needed
+        await asyncio.sleep(1)
+
+        # Delete the message after 10 seconds
+        await message.delete()
