@@ -1,21 +1,29 @@
 {
-	"$schema": "https://raw.githubusercontent.com/Cog-Creators/Red-DiscordBot/V3/develop/schema/red_cog.schema.json",
-	"name": "Avatar",
-	"short": "Get a user's avatar.",
-	"description": "Returns a user's avatar as attachment. With optional slash command.",
-	"end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
-	"install_msg": "You've just installed the Avatar cog!\nType `[p]help avatar` to get a description for this cog.",
-	"author": [
-		"Mr. 42"
-	],
-	"required_cogs": {},
-	"requirements": [],
-	"tags": [
-		"avatar",
-		"pfp"
-	],
-	"min_bot_version": "3.5.0",
-	"hidden": false,
-	"disabled": false,
-	"type": "COG"
+    "name": "AvatarCog",
+    "author": "Your Name",
+    "version": "1.0.0",
+    "short": "Retrieve user avatars as attachments.",
+    "long": "A Red Bot cog to retrieve user avatars as attachments with the command `avatar @username`.",
+    "tags": ["utility", "avatar"],
+    "required_cogs": [],
+    "optional_cogs": [],
+    "required_permissions": [],
+    "min_bot_version": "3.0.0",
+    "description": "Retrieve user avatars as attachments.",
+    "install_msg": [
+        "To use this cog, load it with the following command:",
+        "`[p]load AvatarCog`",
+        "Replace `[p]` with your Red Bot prefix."
+    ],
+    "commands": [
+        {
+            "name": "avatar",
+            "description": "Retrieve user avatar as an attachment.",
+            "usage": "[p]avatar @username",
+            "examples": ["[p]avatar @JohnDoe"]
+        }
+    ],
+    "credits": [
+        "Credit to Your Name for creating this cog."
+    ]
 }
