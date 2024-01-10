@@ -1,9 +1,9 @@
 class Avatar(commands.Cog):
-    """Get user's avatar."""
+    """Get user's avatar URL."""
 
     @commands.command()
     async def avatar(self, ctx, *, user: discord.Member=None):
-        """Returns user avatar.
+        """Returns user avatar URL.
 
         User argument can be user mention, nickname, username, user ID.
         Default to yourself when no argument is supplied.
@@ -13,10 +13,6 @@ class Avatar(commands.Cog):
         if not user:
             user = author
 
-        avatar = user.avatar if user.avatar else user.default_avatar
+        url = user.avatar.url if user.avatar else user.default_avatar.url
 
-        # Get the avatar in bytes
-        avatar_bytes = await avatar.read()
-
-        # Send the avatar file directly
-        await ctx.send(f"{user}'s Avatar:", file=discord.File(avatar_bytes, f"{user}_avatar{avatar.suffix}"))
+        await ctx.send(f"{user}'s Avatar URL: {url}")
