@@ -20,22 +20,21 @@ class Avatar(commands.Cog):
         message = f"{ctx.author.mention} requested the avatar of {bold(user.display_name)}."
 
         if user == ctx.author:
-            await ctx.send(f"This is your avatar, {ctx.author.mention}.")
-            return
-
-        if user == ctx.me:
-            message += f"\nThis is _my_ avatar, {ctx.author.mention}!"
+            message = f"Here is your avatar, {ctx.author.mention}."
+        elif user == ctx.me:
+            message = f"This is _my_ avatar, {ctx.author.mention}!"
         elif isinstance(ctx.channel, discord.DMChannel):
-            message += f"\nYou requested the avatar of {bold(user.name)}."
+            message = f"You requested the avatar of {bold(user.name)}."
 
         async with ctx.typing():
             pfp = user.avatar if isinstance(ctx.channel, discord.channel.DMChannel) else user.display_avatar
             file_ext = "gif" if pfp and pfp.is_animated() else "png"
 
             if pfp:
-                await ctx.send(message, file=await pfp.to_file(filename=f"pfp-{user.id}.{file_ext}"))
+                await ctx.send(message)
+                await ctx.send(file=await pfp.to_file(filename=f"pfp-{user.id}.{file_ext}"))
             else:
-                await ctx.send(message + f"\n{user.display_avatar.url}")
+                await ctx.send(f"{message}\n{user.display_avatar.url}")
 
     async def red_delete_data_for_user(self, **kwargs) -> None:
         pass
