@@ -16,4 +16,5 @@ class AvatarCog(commands.Cog):
         avatar_bytes = await avatar_url.read()
 
         file = discord.File(avatar_bytes, filename="avatar.png")
+        await ctx.send(f"Avatar of {user.name}:")
         await ctx.send(file=file)
