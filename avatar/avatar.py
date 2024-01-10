@@ -20,20 +20,22 @@ class Avatar(commands.Cog):
         message = f"{ctx.author.mention} requested the avatar of {bold(user.display_name)}."
 
         if user == ctx.author:
-            message = f"Here is your avatar, {ctx.author.mention}."
+            embed = discord.Embed(description=f"This is your avatar, {ctx.author.mention}.")
         elif user == ctx.me:
-            message = f"This is _my_ avatar, {ctx.author.mention}!"
+            embed = discord.Embed(description=f"This is _my_ avatar, {ctx.author.mention}!")
         elif isinstance(ctx.channel, discord.DMChannel):
-            message = f"You requested the avatar of {bold(user.name)}."
+            embed = discord.Embed(description=f"You requested the avatar of {bold(user.name)}.")
+        else:
+            embed = discord.Embed(description=f"{ctx.author.mention} requested the avatar of {bold(user.display_name)}.")
 
         async with ctx.typing():
             pfp = user.avatar if isinstance(ctx.channel, discord.channel.DMChannel) else user.display_avatar
             file_ext = "gif" if pfp and pfp.is_animated() else "png"
 
             if pfp:
-                await ctx.send(message, file=await pfp.to_file(filename=f"pfp-{user.id}.{file_ext}"))
+                embed.set_image(url=f"attachment://pfp-{user.id}.{file_ext}")
+                await ctx.send(embed=embed, file=await pfp.to_file(filename=f"pfp-{user.id}.{file_ext}"))
             else:
-                embed = discord.Embed(description=message)
                 embed.set_image(url=user.display_avatar.url)
                 await ctx.send(embed=embed)
 
