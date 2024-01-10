@@ -1,33 +1,38 @@
-# Simple avatar URL fetch by Yukirin#0048
-
-# Discord
 import discord
-import asyncio  # Import asyncio for sleep function
-
-# Red
-from redbot.core import commands
+from redbot.core import app_commands, commands
+from redbot.core.utils.chat_formatting import bold, error
+from typing import Optional
 
 
 class Avatar(commands.Cog):
-    """Get user's avatar URL."""
+    """Get a user's avatar."""
 
-    @commands.command()
-    async def avatar(self, ctx, *, user: discord.Member=None):
-        """Returns user avatar URL.
+    @commands.hybrid_command(name="avatar", description="Get a user's avatar")
+    @app_commands.describe(user="The user you wish to retrieve the avatar of")
+    @app_commands.guild_only()
+    async def avatar(self, ctx: commands.Context, user: discord.Member) -> None:
+        """Returns a user's avatar as attachment.
 
         User argument can be user mention, nickname, username, user ID.
-        Default to yourself when no argument is supplied.
-        """
-        author = ctx.author
 
-        if not user:
-            user = author
+        Defaults to requester when no argument is supplied."""
+        message = ("{author} requested the avatar of {name}.").format(author=ctx.author.mention, name=bold(user.display_name))
+        if user == ctx.author:
+            message = ("Here is your avatar, {author}.").format(author=ctx.author.mention)
+        elif user == ctx.me:
+            message = ("This is _my_ avatar, {author}!").format(author=ctx.author.mention)
+        elif isinstance(ctx.channel, discord.DMChannel):
+            message = ("You requested the avatar of {name}.").format(name=bold(user.global_name))
 
-        url = user.avatar.with_static_format("png")
-        message = await ctx.send(f"{user}'s Avatar URL : {url}")
+        if isinstance(ctx.channel, discord.channel.DMChannel) or ctx.channel.permissions_for(ctx.guild.me).attach_files:
+            async with ctx.typing():
+                pfp = user.avatar if isinstance(ctx.channel, discord.channel.DMChannel) else user.display_avatar
+                fileExt = "gif" if pfp and pfp.is_animated() else "png"
+            return await ctx.send(message, file=await pfp.to_file(filename=f"pfp-{user.id}.{fileExt}"))
+        elif ctx.channel.permissions_for(ctx.guild.me).embed_links:
+            return await ctx.send(message + "\n" + user.display_avatar.url)
 
-        # Sleep for 10 seconds, adjust as needed
-        await asyncio.sleep(1)
+        await ctx.send(error(("I do not have permission to attach files or embed links in this channel.")), ephemeral=True)
 
-        # Delete the message after 10 seconds
-        await message.delete()
+    async def red_delete_data_for_user(self, **kwargs) -> None:
+        pass
