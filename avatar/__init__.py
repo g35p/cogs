@@ -1,5 +1,12 @@
-# __init__.py
-from .avatar import AvatarCog
+import json
 
-def setup(bot):
-    bot.add_cog(AvatarCog(bot))
+from pathlib import Path
+from redbot.core.bot import Red
+
+from .avatar import Avatar
+
+with open(Path(__file__).parent / "info.json") as fp:
+	__red_end_user_data_statement__ = json.load(fp)["end_user_data_statement"]
+
+async def setup(bot: Red) -> None:
+	await bot.add_cog(Avatar())
