@@ -1,3 +1,12 @@
+# Simple avatar URL fetch by Yukirin#0048
+
+# Discord
+import discord
+
+# Red
+from redbot.core import commands
+
+
 class Avatar(commands.Cog):
     """Get user's avatar URL."""
 
@@ -13,6 +22,6 @@ class Avatar(commands.Cog):
         if not user:
             user = author
 
-        url = user.avatar.url if user.avatar else user.default_avatar.url
+        url = user.avatar.with_static_format("png")
 
-        await ctx.send(f"{user}'s Avatar URL: {url}")
+        await ctx.send(f"{user}'s Avatar URL : {url}")
