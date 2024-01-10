@@ -31,13 +31,11 @@ class Avatar(commands.Cog):
             file_ext = "gif" if pfp and pfp.is_animated() else "png"
 
             if pfp:
-                return await ctx.send(message, file=await pfp.to_file(filename=f"pfp-{user.id}.{file_ext}"))
-            elif ctx.guild and ctx.channel.permissions_for(ctx.guild.me).embed_links:
+                await ctx.send(message, file=await pfp.to_file(filename=f"pfp-{user.id}.{file_ext}"))
+            else:
                 embed = discord.Embed(description=message)
                 embed.set_image(url=user.display_avatar.url)
-                return await ctx.send(embed=embed)
-
-            await ctx.send(error("I do not have permission to attach files or embed links in this channel."), ephemeral=True)
+                await ctx.send(embed=embed)
 
     async def red_delete_data_for_user(self, **kwargs) -> None:
         pass
