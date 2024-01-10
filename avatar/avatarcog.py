@@ -5,6 +5,9 @@ class AvatarCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    async def initialize(self):
+        pass  # You can add any initialization logic here
+
     @commands.command()
     async def avatar(self, ctx, user: discord.User = None):
         """Retrieve user avatar as an attachment."""
@@ -14,6 +17,3 @@ class AvatarCog(commands.Cog):
 
         file = discord.File(avatar_bytes, filename="avatar.png")
         await ctx.send(file=file)
-
-def setup(bot):
-    bot.add_cog(AvatarCog(bot))
