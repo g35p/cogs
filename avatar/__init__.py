@@ -1,4 +1,6 @@
 from .avatarcog import AvatarCog
 
-def setup(bot):
-    bot.add_cog(AvatarCog(bot))
+async def setup(bot):
+    cog = AvatarCog(bot)
+    bot.add_cog(cog)
+    await cog.initialize()
