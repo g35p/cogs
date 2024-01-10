@@ -17,25 +17,27 @@ class Avatar(commands.Cog):
         if user is None:
             user = ctx.author
 
-        message = ("{author} requested the avatar of {name}.").format(author=ctx.author.mention, name=bold(user.display_name))
+        message = f"{ctx.author.mention} requested the avatar of {bold(user.display_name)}."
 
         if user == ctx.author:
-            message = ("Here is your avatar, {author}.").format(author=ctx.author.mention)
+            message = f"Here is your avatar, {ctx.author.mention}."
         elif user == ctx.me:
-            message = ("This is _my_ avatar, {author}!").format(author=ctx.author.mention)
+            message = f"This is _my_ avatar, {ctx.author.mention}!"
         elif isinstance(ctx.channel, discord.DMChannel):
-            message = ("You requested the avatar of {name}.").format(name=bold(user.name))
+            message = f"You requested the avatar of {bold(user.name)}."
 
         async with ctx.typing():
             pfp = user.avatar if isinstance(ctx.channel, discord.channel.DMChannel) else user.display_avatar
-            fileExt = "gif" if pfp and pfp.is_animated() else "png"
+            file_ext = "gif" if pfp and pfp.is_animated() else "png"
 
             if pfp:
-                return await ctx.send(message, file=await pfp.to_file(filename=f"pfp-{user.id}.{fileExt}"))
+                return await ctx.send(message, file=await pfp.to_file(filename=f"pfp-{user.id}.{file_ext}"))
             elif ctx.guild and ctx.channel.permissions_for(ctx.guild.me).embed_links:
-                return await ctx.send(message + "\n" + user.display_avatar.url)
+                embed = discord.Embed(description=message)
+                embed.set_image(url=user.display_avatar.url)
+                return await ctx.send(embed=embed)
 
-            await ctx.send(error(("I do not have permission to attach files or embed links in this channel.")), ephemeral=True)
+            await ctx.send(error("I do not have permission to attach files or embed links in this channel."), ephemeral=True)
 
     async def red_delete_data_for_user(self, **kwargs) -> None:
         pass
