@@ -20,8 +20,10 @@ class Avatar(commands.Cog):
         message = f"{ctx.author.mention} requested the avatar of {bold(user.display_name)}."
 
         if user == ctx.author:
-            message += f"\nThis is your avatar, {ctx.author.mention}."
-        elif user == ctx.me:
+            await ctx.send(f"This is your avatar, {ctx.author.mention}.")
+            return
+
+        if user == ctx.me:
             message += f"\nThis is _my_ avatar, {ctx.author.mention}!"
         elif isinstance(ctx.channel, discord.DMChannel):
             message += f"\nYou requested the avatar of {bold(user.name)}."
