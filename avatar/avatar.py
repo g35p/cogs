@@ -1,27 +1,33 @@
+# Discord
 import discord
+
+# Red
 from redbot.core import commands
 
-class AvatarCog(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
+class Avatar(commands.Cog):
+    """Get user's avatar URL."""
 
-    @commands.command(name="avatar", aliases=["av"])
-    async def avatar(self, ctx, user: discord.User = None):
+    @commands.command()
+    async def avatar(self, ctx, user: discord.Member=None):
         """
-        Retrieves the avatar of the specified user or the user who invoked the command.
+        Returns user avatar URL.
+
+        :param ctx: The command context.
+        :param user: The user whose avatar URL is to be fetched.
+                     Defaults to the author if not specified.
+        :type user: discord.Member
         """
-        if not user:
-            user = ctx.author
+        author = ctx.author
 
-        avatar_url = user.avatar_url_as(size=1024)
+        try:
+            if not user:
+                user = author
 
-        embed = discord.Embed(
-            title=f"Avatar for {user.name}#{user.discriminator}",
-            color=discord.Color.blue()
-        )
-        embed.set_image(url=avatar_url)
+            url = user.avatar.with_static_format("png")
 
-        await ctx.send(embed=embed)
+            await ctx.send(f"{user}'s Avatar URL: {url}")
 
-def setup(bot):
-    bot.add_cog(AvatarCog(bot))
+        except discord.errors.NotFound:
+            await ctx.send("User not found.")
+        except Exception as e:
+            await ctx.send(f"An error occurred: {e}")
