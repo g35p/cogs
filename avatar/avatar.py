@@ -1,36 +1,22 @@
-# Discord
 import discord
-from discord import File
-
-# Red
 from redbot.core import commands
 
 class Avatar(commands.Cog):
-    """Get user's avatar and send it as an attachment."""
+    """Get user's avatar URL."""
 
     @commands.command()
-    async def avatar(self, ctx, user: discord.Member=None):
+    async def avatar(self, ctx, *, user: discord.Member=None):
+        """Returns user avatar URL.
+
+        User argument can be user mention, nickname, username, user ID.
+        Defaults to yourself when no argument is supplied.
         """
-        Sends user avatar as an attachment.
+        user = user or ctx.author
+        url = f"{user.avatar.with_static_format('png')}"
 
-        :param ctx: The command context.
-        :param user: The user whose avatar is to be sent.
-                     Defaults to the author if not specified.
-        :type user: discord.Member
-        """
-        author = ctx.author
+        if url:
+            message = f"{user}'s Avatar URL: {url}"
+        else:
+            message = f"{user} does not have a valid avatar."
 
-        try:
-            if not user:
-                user = author
-
-            avatar_url = user.avatar.with_static_format("png")
-            avatar_data = await avatar_url.read()
-
-            avatar_file = File(avatar_data, filename="avatar.png")
-            await ctx.send(f"{user}'s Avatar:", file=avatar_file)
-
-        except discord.errors.NotFound:
-            await ctx.send("User not found.")
-        except Exception as e:
-            await ctx.send(f"An error occurred: {e}")
+        await ctx.send(message)
