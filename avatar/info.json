@@ -1,14 +1,6 @@
 {
   "name": "Avatar",
-  "author": "Your Name",
-  "description": "A Red Bot cog to get user avatars.",
   "version": "1.0.0",
-  "minimum_bot_version": "3.0.0",
-  "redbot": "3.0.0",
-  "cog": {
-    "name": "Avatar",
-    "hidden": false,
-    "permissions": {},
-    "requirements": []
-  }
+  "author": ["Your Name"],
+  "description": "A Red Bot cog to get user avatars."
 }
