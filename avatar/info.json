@@ -1,19 +1,10 @@
 {
-    "name": "Avatar",
-    "description": "Retrieve user avatar.",
-    "author": "Your Name",
-    "version": "1.0.0",
-    "redbot": "3.0.0",
-    "commands": [
-        {
-            "base": "avatar",
-            "name": "avatar",
-            "aliases": [],
-            "short": "Retrieve user avatar.",
-            "long": "Retrieve user avatar.",
-            "usage": [
-                "{prefix}avatar [user]"
-            ]
-        }
-    ]
+    "author" : ["Gabriel"],
+    "install_msg" : "Thank you for installing my Avatar module. Type `[p]help Avatar` for more information.",
+    "name" : "Avatar",
+    "short" : "Get user's Avatar URL",
+    "description" : "Simply return user's avatar url",
+    "disabled" : false,
+    "tags" : ["avatar", "Utility"],
+    "min_bot_version": "3.5.0"
 }
