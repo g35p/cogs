@@ -25,7 +25,11 @@ class Avatar(commands.Cog):
 
         async with ctx.typing():
             pfp = user.avatar if isinstance(ctx.channel, discord.DMChannel) else user.display_avatar
-            file_ext = "gif" if pfp and pfp.is_animated() else "png"
+
+            if pfp is None:
+                return await ctx.send(f"I cannot retrieve the avatar of {bold(user.display_name)} in DMs.")
+
+            file_ext = "gif" if pfp.is_animated() else "png"
 
         return await ctx.send(message, file=await pfp.to_file(filename=f"pfp-{user.id}.{file_ext}"))
 
