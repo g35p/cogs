@@ -1,4 +1,4 @@
-from .avatar_cog import AvatarCog
+from .avatar import Avatar
 
 def setup(bot):
-    bot.add_cog(AvatarCog(bot))
+    bot.add_cog(Avatar(bot))
