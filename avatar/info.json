@@ -1,0 +1,19 @@
+{
+    "name": "Avatar",
+    "description": "Retrieve user avatar.",
+    "author": "Your Name",
+    "version": "1.0.0",
+    "redbot": "3.0.0",
+    "commands": [
+        {
+            "base": "avatar",
+            "name": "avatar",
+            "aliases": [],
+            "short": "Retrieve user avatar.",
+            "long": "Retrieve user avatar.",
+            "usage": [
+                "{prefix}avatar [user]"
+            ]
+        }
+    ]
+}
