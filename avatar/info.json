@@ -1,17 +1,14 @@
 {
-  "name": "AvatarCog",
+  "name": "Avatar",
   "author": "Your Name",
+  "description": "A Red Bot cog to get user avatars.",
   "version": "1.0.0",
   "minimum_bot_version": "3.0.0",
-  "description": "A RedBot cog to display user avatars.",
-  "short": "Get user avatars",
-  "commands": [
-    {
-      "name": "avatar",
-      "usage": "[p]avatar [user]",
-      "description": "Display the avatar of a user.",
-      "examples": ["[p]avatar", "[p]avatar @username"]
-    }
-  ],
-  "tags": ["utility"]
+  "redbot": "3.0.0",
+  "cog": {
+    "name": "Avatar",
+    "hidden": false,
+    "permissions": {},
+    "requirements": []
+  }
 }
