@@ -56,6 +56,7 @@ class Trivia(commands.Cog):
             payout_multiplier=0.0,
             allow_override=True,
             use_spoilers=False,
+            give_clues=True,
         )
 
         self.config.register_member(wins=0, games=0, total_score=0)
@@ -96,7 +97,8 @@ class Trivia(commands.Cog):
                 "Reveal answer on timeout: {reveal_answer}\n"
                 "Payout multiplier: {payout_multiplier}\n"
                 "Allow lists to override settings: {allow_override}\n"
-                "Use Spoilers in answers: {use_spoilers}"
+                "Use Spoilers in answers: {use_spoilers}\n"
+                "Use clues to make it easier{give_clues}"
             ).format(**settings_dict),
             lang="py",
         )
@@ -165,7 +167,20 @@ class Trivia(commands.Cog):
             await ctx.send(_("Done. I'll put the answers in spoilers next time."))
         else:
             await ctx.send(_("Alright, I won't use spoilers to hide answers anymore."))
+            
+    @triviaset.command(name="giveclues", usage="<true_or_false>")
+    async def triviaset_give_clues(self, ctx: commands.Context, enabled: bool):
+        """Set if bot will display clues in spoilers.
 
+        If enabled, the bot will give you clues after a few seconds.
+        """
+        settings = self.config.guild(ctx.guild)
+        await settings.give_clues.set(enabled)
+        if enabled:
+            await ctx.send(_("Done. I'll give you clues from now on."))
+        else:
+            await ctx.send(_("Alright, I won't give you clues anymore."))
+            
     @triviaset.command(name="botplays", usage="<true_or_false>")
     async def triviaset_bot_plays(self, ctx: commands.Context, enabled: bool):
         """Set whether or not the bot gains points.
