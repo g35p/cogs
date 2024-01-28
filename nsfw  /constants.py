@@ -100,7 +100,6 @@ BBW = [
     "gonewildcurvy",
 ]
 BDSM = ["BDSMGW", "BDSM_NoSpam", "Bondage", "Spanking", "bdsm", "ropeart"]
-BLACKCOCK = ["Blackdick", "ChurchOfTheBBC", "bigblackcocks", "blackcock"]
 BLOWJOB = [
     "AsianBlowjobs",
     "Blowjobs",
@@ -172,15 +171,6 @@ DICK = [
     "twinks",
 ]
 DOUBLE_P = ["Technical_DP", "doublepenetration"]
-EBONY = [
-    "DarkAngels",
-    "Ebony",
-    "EbonyGirls",
-    "bigblackasses",
-    "blackchickswhitedicks",
-    "blackporn",
-    "ebonyamateurs",
-]
 FACIALS = ["FacialFun", "facialcumshots"]
 FEET = [
     "ButtsAndBareFeet",
@@ -197,24 +187,6 @@ FUTA = [
     "HorsecockFuta",
     "Rule34_Futanari",
     "hugefutanari",
-]
-GAY_P = [
-    "CuteGuyButts",
-    "GayDaddiesPics",
-    "GayGifs",
-    "ManSex",
-    "NSFW_GAY",
-    "broslikeus",
-    "bulges",
-    "gaybears",
-    "gaynsfw",
-    "gayotters",
-    "jockstraps",
-    "ladybonersgw",
-    "lovegaymale",
-    "manass",
-    "manlove",
-    "MaleUnderwear",
 ]
 GROUPS = ["GroupOfNudeGirls", "groupsex"]
 LESBIANS = [
@@ -320,6 +292,20 @@ RULE_34 = [
     "rule34cartoons",
     "rule34_ass",
 ]
+SKINNY = [
+          "skinnytail",
+          "xsmallgirls",
+          "Ribcage",
+          "funsized",
+          "petite",
+          "flatchests",
+          "aa_cups",
+          "Flatties",
+          "TinyTits",
+          "ExtraSmall",
+          "PetiteGoneWild",
+          "SmallCutie",
+]
 SQUIRTS = ["squirting", "squirting_gifs", "wetspot", "grool"]
 THIGHS = [
     "ThickThighs",
@@ -341,17 +327,6 @@ THREESOME = [
     "groupsex",
     "gangbang",
     "blowbang",
-]
-TRANS = [
-    "DeliciousTraps",
-    "GoneWildTrans",
-    "Shemale_Big_Cock",
-    "Shemales",
-    "ShemalesParadise",
-    "Transex",
-    "shemale_gifs",
-    "trapgifs",
-    "traps",
 ]
 WILD = [
     "ArtGW",
