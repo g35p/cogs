@@ -159,7 +159,7 @@ class Core(commands.Cog):
             )
         else:
             em = await self._embed(
-                color=0x891193,
+                color=0x2B2D31,
                 description=bold(
                     "[Link if you don't see image]({url})".format(url=url),
                     escape_formatting=False,
@@ -184,7 +184,7 @@ class Core(commands.Cog):
         if not data:
             return
         em = await self._embed(
-            color=0x891193,
+            color=0x2B2D31,
             description=bold(
                 "[Link if you don't see image]({url})".format(url=data["img"][arg]),
                 escape_formatting=False,
