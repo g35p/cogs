@@ -149,9 +149,7 @@ class Core(commands.Cog):
 
         if any(wrong in url for wrong in NOT_EMBED_DOMAINS):
             em = (
-                "Here is {name} gif ..."
-                + " \N{EYES}\n\n"
-                + "Requested by {req} {emoji} • From {r}\n{url}"
+                "Requested by {req} {emoji} • From {r}\n{url}"
             ).format(
                 name=name,
                 req=bold(ctx.author.display_name),
@@ -162,7 +160,6 @@ class Core(commands.Cog):
         else:
             em = await self._embed(
                 color=0x891193,
-                title=("Here is {name} image ..." + " \N{EYES}").format(name=name),
                 description=bold(
                     "[Link if you don't see image]({url})".format(url=url),
                     escape_formatting=False,
@@ -188,7 +185,6 @@ class Core(commands.Cog):
             return
         em = await self._embed(
             color=0x891193,
-            title=("Here is {name} image ..." + " \N{EYES}").format(name=name),
             description=bold(
                 "[Link if you don't see image]({url})".format(url=data["img"][arg]),
                 escape_formatting=False,
