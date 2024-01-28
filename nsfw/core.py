@@ -123,14 +123,14 @@ class Core(commands.Cog):
     async def _api_errors_msg(self, ctx: commands.Context, error_code: int = None):
         """Error message when API calls fail."""
         return await ctx.send(
-            _("Error when trying to contact image service, please try again later. ")
+            "Error when trying to contact image service, please try again later. "
             + "(Code: {})".format(inline(str(error_code)))
         )
 
     async def _version_msg(self, ctx: commands.Context, version: str, authors: List[str]):
         """Cog version message."""
         msg = box(
-            _("Nsfw cog version: {version}\nAuthors: {authors}").format(
+            "Nsfw cog version: {version}\nAuthors: {authors}".format(
                 version=version, authors=", ".join(authors)
             ),
             lang="py",
@@ -149,9 +149,9 @@ class Core(commands.Cog):
 
         if any(wrong in url for wrong in NOT_EMBED_DOMAINS):
             em = (
-                _("Here is {name} gif ...")
+                "Here is {name} gif ..."
                 + " \N{EYES}\n\n"
-                + _("Requested by {req} {emoji} • From {r}\n{url}")
+                + "Requested by {req} {emoji} • From {r}\n{url}"
             ).format(
                 name=name,
                 req=bold(ctx.author.display_name),
@@ -162,13 +162,13 @@ class Core(commands.Cog):
         else:
             em = await self._embed(
                 color=0x891193,
-                title=(_("Here is {name} image ...") + " \N{EYES}").format(name=name),
+                title=("Here is {name} image ..." + " \N{EYES}").format(name=name),
                 description=bold(
-                    _("[Link if you don't see image]({url})").format(url=url),
+                    "[Link if you don't see image]({url})".format(url=url),
                     escape_formatting=False,
                 ),
                 image=url,
-                footer=_("Requested by {req} {emoji} • From r/{r}").format(
+                footer="Requested by {req} {emoji} • From r/{r}".format(
                     req=ctx.author.display_name, emoji=emoji(), r=subr
                 ),
             )
@@ -188,13 +188,13 @@ class Core(commands.Cog):
             return
         em = await self._embed(
             color=0x891193,
-            title=(_("Here is {name} image ...") + " \N{EYES}").format(name=name),
+            title=("Here is {name} image ..." + " \N{EYES}").format(name=name),
             description=bold(
-                _("[Link if you don't see image]({url})").format(url=data["img"][arg]),
+                "[Link if you don't see image]({url})".format(url=data["img"][arg]),
                 escape_formatting=False,
             ),
             image=data["img"][arg],
-            footer=_("Requested by {req} {emoji} • From {source}").format(
+            footer="Requested by {req} {emoji} • From {source}".format(
                 req=ctx.author.display_name, emoji=emoji(), source=source
             ),
         )
