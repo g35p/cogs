@@ -8,7 +8,6 @@ import aiohttp
 import discord
 from redbot.core import Config, commands
 from redbot.core.bot import Red
-from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, inline
 
 from .constants import (
@@ -20,7 +19,6 @@ from .constants import (
     emoji,
 )
 
-_ = Translator("Nsfw", __file__)
 
 
 # FIXME: This code really needs a good rewrite at some point.
