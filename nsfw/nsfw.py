@@ -1,17 +1,8 @@
 import discord
-
 from redbot.core import commands
-from redbot.core.i18n import Translator, cog_i18n
-
-import contextlib
-
 from . import constants as sub
 from .core import Core
 
-_ = Translator("Nsfw", __file__)
-
-
-@cog_i18n(_)
 class Nsfw(Core):
     """
     Send random NSFW images from random subreddits
@@ -23,7 +14,6 @@ class Nsfw(Core):
     @commands.command()
     async def nsfwversion(self, ctx: commands.Context):
         """Get the version of the installed Nsfw cog."""
-
         await self._version_msg(ctx, self.__version__, self.__author__)
 
     @commands.is_owner()
@@ -33,7 +23,8 @@ class Nsfw(Core):
 
     @nsfwset.command()
     async def switchredditapi(self, ctx: commands.Context):
-        """Toggle to use Reddit API directly with the cost of getting ratelimited fast, or use Martine API with faster results and no ratelimits problems.
+        """Toggle to use Reddit API directly with the cost of getting ratelimited fast,
+        or use Martine API with faster results and no ratelimits problems.
 
         Defaults to Martine API."""
         val = await self.config.use_reddit_api()
