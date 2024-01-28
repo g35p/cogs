@@ -1,11 +1,14 @@
 import discord
 
 from redbot.core import commands
+from redbot.core.i18n import Translator, cog_i18n
 
 import contextlib
 
 from . import constants as sub
 from .core import Core
+
+_ = Translator("Nsfw", __file__)
 
 
 @cog_i18n(_)
