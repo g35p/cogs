@@ -366,8 +366,8 @@ class Nsfw(Core):
     @commands.bot_has_permissions(embed_links=True)
     @commands.cooldown(1, 0.5, commands.BucketType.user)
     @commands.command(aliases=["petite"])
-    async def thigh(self, ctx: commands.Context):
-        """Sends some thighs images from random subreddits."""
+    async def skinny(self, ctx: commands.Context):
+        """Sends some skinny or petite images from random subreddits."""
 
         await self._send_msg(ctx, _("skinny"), sub.SKINNY)
         
