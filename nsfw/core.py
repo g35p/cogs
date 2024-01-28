@@ -22,7 +22,7 @@ from .constants import (
 
 
 # FIXME: This code really needs a good rewrite at some point.
-@cog_i18n(_)
+
 class Core(commands.Cog):
 
     __author__ = ["Predä", "aikaterna"]
