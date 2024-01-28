@@ -303,7 +303,7 @@ class Nsfw(Core):
             name="porn gif",
             arg="message",
             source="Nekobot API",
-            url=sub.NEKOBOT_URL.format("pgif",
+            url=sub.NEKOBOT_URL.format("pgif"),
         )
 
     @commands.is_nsfw()
