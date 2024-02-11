@@ -111,7 +111,7 @@ class Hangman(commands.Cog):
 			), (                  
 				'†                  \n'		
 				'  ╔════╗           \n'
-				'  ║    │ R .I.P.   \n'
+				'  ║    │   R.I.P.  \n'
 				'  ║    X           \n'
 				'  ║   /│\          \n'
 				'  ║    |           \n'
