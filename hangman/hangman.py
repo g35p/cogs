@@ -26,16 +26,26 @@ class Hangman(commands.Cog):
 				'   ║       \n'
 				'   ║       \n'
 				'   ║       \n'
-				' ╒═╩═════╕ \n'
+				' ▒▒▒▒▒▒▒▒▒▒\n'
 			), (
+				'   ╔═══╗   \n'
+				'   ║   ┼   \n'
+				'   ║       \n'
+				'   ║       \n'
+				'   ║       \n'
+				'   ║       \n'
+				'   ║ ██████\n'
+				' ▒▒▒▒▒▒▒▒▒▒\n'
+			), (
+				
 				'   ╔═══╗   \n'
 				'   ║   ┼   \n'
 				'   ║   Ꝺ   \n'
 				'   ║       \n'
 				'   ║       \n'
 				'   ║       \n'
-				'   ║       \n'
-				' ╒═╩═════╕ \n'
+				'   ║ ██████\n'
+				' ▒▒▒▒▒▒▒▒▒▒\n'
 			), (
 				'   ╔═══╗   \n'
 				'   ║   ┼   \n'
@@ -43,8 +53,8 @@ class Hangman(commands.Cog):
 				'   ║   │   \n'
 				'   ║   │   \n'
 				'   ║       \n'
-				'   ║       \n'
-				' ╒═╩═════╕ \n'
+				'   ║ ██████\n'
+				' ▒▒▒▒▒▒▒▒▒▒\n'
 			), (
 				'   ╔═══╗   \n'
 				'   ║   ┼   \n'
@@ -52,8 +62,8 @@ class Hangman(commands.Cog):
 				'   ║  \\│ \n'
 				'   ║   │   \n'
 				'   ║       \n'
-				'   ║       \n'
-				' ╒═╩═════╕ \n'
+				'   ║ ██████\n'
+				' ▒▒▒▒▒▒▒▒▒▒\n'
 			), (
 				'   ╔═══╗   \n'
 				'   ║   ┼   \n'
@@ -61,8 +71,8 @@ class Hangman(commands.Cog):
 				'   ║  \\│/ \n'
 				'   ║   │   \n'
 				'   ║       \n'
-				'   ║       \n'
-				' ╒═╩═════╕ \n'
+				'   ║ ██████\n'
+				' ▒▒▒▒▒▒▒▒▒▒\n'
 			), (
 				'   ╔═══╗   \n'
 				'   ║   ┼   \n'
@@ -70,8 +80,8 @@ class Hangman(commands.Cog):
 				'   ║  \\│/ \n'
 				'   ║   │   \n'
 				'   ║  /    \n'
-				'   ║       \n'
-				' ╒═╩═════╕ \n'
+				'   ║ ██████\n''
+				' ▒▒▒▒▒▒▒▒▒▒\n'
 			), (
 				'   ╔═══╗   \n'
 				'   ║   ┼   \n'
@@ -79,8 +89,8 @@ class Hangman(commands.Cog):
 				'   ║  \\│/ \n'
 				'   ║   │   \n'
 				'   ║  / \  \n'
-				'   ║       \n'
-				' ╒═╩═════╕ \n'
+				'   ║ ██████\n'
+				' ▒▒▒▒▒▒▒▒▒▒\n'
 			), (
 				'   ╔═══╗   \n'
 				'   ║   ┼   \n'
@@ -88,8 +98,8 @@ class Hangman(commands.Cog):
 				'   ║  \\│/ \n'
 				'   ║   │   \n'
 				'   ║  / \  \n'
-				'   ║       \n'
-				' ╒═╩═════╕ \n'
+				'   ║ ██████\n'
+				' ▒▒▒▒▒▒▒▒▒▒\n'
 			)
 		]
 
@@ -167,7 +177,7 @@ class Hangman(commands.Cog):
 			guessed += t
 			if t not in word:
 				fails += 1
-				if fails == 7: #too many fails
+				if fails == 8: #too many fails
 					p = self._get_message(word, guessed)
 					p = f'```{self.man[fails]}\n{p}```Game Over\nThe word was {word}.'
 					if doEdit:
