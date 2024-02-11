@@ -38,8 +38,8 @@ class Hangman(commands.Cog):
 				'▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n'
 			), (                  
 				'╔═══╗         \n'
-				'║   ┼         \n'
-				'║   0         \n'
+				'║   │         \n'
+				'║   Ω         \n'
 				'║             \n'
 				'║             \n'
 				'║             \n'
@@ -47,8 +47,8 @@ class Hangman(commands.Cog):
 				'▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n'
 			), (                  
 				'╔═══╗         \n'
-				'║   ┼         \n'
-				'║   0         \n'
+				'║   │         \n'
+				'║   Ω         \n'
 				'║   │         \n'
 				'║   │         \n'
 				'║             \n'
@@ -56,8 +56,8 @@ class Hangman(commands.Cog):
 				'▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n'
 			), (                  
 				'╔═══╗         \n'
-				'║   ┼         \n'
-				'║   0         \n'
+				'║   │         \n'
+				'║   Ω         \n'
 				'║  \\│        \n'
 				'║   │         \n'
 				'║             \n'
@@ -65,8 +65,8 @@ class Hangman(commands.Cog):
 				'▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n'
 			), (                  
 				'╔═══╗         \n'
-				'║   ┼         \n'
-				'║   0         \n'
+				'║   │         \n'
+				'║   Ω         \n'
 				'║  \\│/       \n'
 				'║   │         \n'
 				'║             \n'
@@ -74,8 +74,8 @@ class Hangman(commands.Cog):
 				'▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n'
 			), (
 				'╔═══╗         \n'
-				'║   ┼         \n'
-				'║   0         \n'
+				'║   │         \n'
+				'║   Ω         \n'
 				'║  \\│/       \n'
 				'║   │         \n'
 				'║  /          \n'
@@ -83,8 +83,8 @@ class Hangman(commands.Cog):
 				'▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n'
 			), (                  
 				'╔═══╗         \n'
-				'║   ┼         \n'
-				'║   0         \n'
+				'║   │         \n'
+				'║   Ω         \n'
 				'║  \\│/       \n'
 				'║   │         \n'
 				'║  / \        \n'
@@ -92,7 +92,7 @@ class Hangman(commands.Cog):
 				'▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n'
 			), (                  
 				'╔═══╗         \n'
-				'║   ┼   R.I.P \n'
+				'║   │   R.I.P \n'
 				'║   X         \n'
 				'║  /│\        \n'
 				'║   │         \n'
@@ -178,7 +178,7 @@ class Hangman(commands.Cog):
 				fails += 1
 				if fails == 8: #too many fails
 					p = self._get_message(word, guessed)
-					p = f'```{self.man[fails]}\n{p}```Jocul s-a terminat.\nCuvântul era {word}.'
+					p = f'```{self.man[fails]}\n{p}```Jocul s-a terminat.\n**Cuvântul era**: {word}.'
 					if doEdit:
 						await boardmsg.edit(content=p)
 					else:
@@ -188,7 +188,7 @@ class Hangman(commands.Cog):
 			#guessed entire word
 			if not (set('abcdefghijklmnopqrstuvwxyz') & set(word)) - set(guessed):
 				p = self._get_message(word, guessed)
-				p = f'```{self.man[fails]}\n{p}```Ai câstigat!\nCuvântul era {word}.'
+				p = f'```{self.man[fails]}\n{p}```Ai câstigat!\n**Cuvântul era**: {word}.'
 				if doEdit:
 					await boardmsg.edit(content=p)
 				else:
