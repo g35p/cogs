@@ -37,7 +37,6 @@ class Hangman(commands.Cog):
 				'   ║ ██████\n'
 				' ▒▒▒▒▒▒▒▒▒▒\n'
 			), (
-				
 				'   ╔═══╗   \n'
 				'   ║   ┼   \n'
 				'   ║   Ꝺ   \n'
@@ -80,7 +79,7 @@ class Hangman(commands.Cog):
 				'   ║  \\│/ \n'
 				'   ║   │   \n'
 				'   ║  /    \n'
-				'   ║ ██████\n''
+				'   ║ ██████\n'
 				' ▒▒▒▒▒▒▒▒▒▒\n'
 			), (
 				'   ╔═══╗   \n'
@@ -152,7 +151,7 @@ class Hangman(commands.Cog):
 			p = self._get_message(word, guessed)
 			p = f'```{self.man[fails]}\n{p}```'
 			if err == 1:
-				p += 'You already guessed that letter.\n'
+				p += 'Ai menționat deja acea literă.\n'
 			if boardmsg is None or not doEdit:
 				boardmsg = await ctx.send(p+'Guess:')
 			else:
@@ -161,7 +160,7 @@ class Hangman(commands.Cog):
 				umsg = await self.bot.wait_for('message', check=check, timeout=60)
 			except asyncio.TimeoutError:
 				return await ctx.send(
-					f'Canceling selection. You took too long.\nThe word was {word}.'
+					f'Anulez jocul. Nu ai răspuns la timp..\nCuvântul era {word}.'
 				)
 			t = umsg.content.lower()
 			if doEdit:
@@ -179,7 +178,7 @@ class Hangman(commands.Cog):
 				fails += 1
 				if fails == 8: #too many fails
 					p = self._get_message(word, guessed)
-					p = f'```{self.man[fails]}\n{p}```Game Over\nThe word was {word}.'
+					p = f'```{self.man[fails]}\n{p}```Jocul s-a terminat.\nCuvântul era {word}.'
 					if doEdit:
 						await boardmsg.edit(content=p)
 					else:
@@ -189,7 +188,7 @@ class Hangman(commands.Cog):
 			#guessed entire word
 			if not (set('abcdefghijklmnopqrstuvwxyz') & set(word)) - set(guessed):
 				p = self._get_message(word, guessed)
-				p = f'```{self.man[fails]}\n{p}```You win!\nThe word was {word}.'
+				p = f'```{self.man[fails]}\n{p}```Ai câstigat!\nCuvântul era {word}.'
 				if doEdit:
 					await boardmsg.edit(content=p)
 				else:
