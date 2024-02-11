@@ -19,6 +19,7 @@ class Hangman(commands.Cog):
 		)
 		self.man = [
 			(
+				
 				'   ╔═══╗         \n'
 				'   ║   ┴         \n'
 				'   ║             \n'
@@ -27,7 +28,8 @@ class Hangman(commands.Cog):
 				'   ║             \n'
 				'   ║             \n'
 				' ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n'
-			), (                  
+			), (    
+				
 				'   ╔═══╗         \n'
 				'   ║   ┴         \n'
 				'   ║             \n'
