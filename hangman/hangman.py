@@ -153,9 +153,9 @@ class Hangman(commands.Cog):
 			if err == 1:
 				p += 'Ai menționat deja acea literă.\n'
 			if boardmsg is None or not doEdit:
-				boardmsg = await ctx.send(p+'Guess:')
+				boardmsg = await ctx.send(p+'Ghicește:')
 			else:
-				await boardmsg.edit(content=str(p+'Guess:'))
+				await boardmsg.edit(content=str(p+'Ghicește:'))
 			try:
 				umsg = await self.bot.wait_for('message', check=check, timeout=60)
 			except asyncio.TimeoutError:
