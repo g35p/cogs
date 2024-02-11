@@ -93,7 +93,7 @@ class Hangman(commands.Cog):
 			), (                  
 				'╔═══╗         \n'
 				'║   │   R.I.P \n'
-				'║   X         \n'
+				'║   **X**     \n'
 				'║  /│\        \n'
 				'║   │         \n'
 				'║  / \   ─┼─  \n'
