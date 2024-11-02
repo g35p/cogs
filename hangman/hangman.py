@@ -19,7 +19,7 @@ class Hangman(commands.Cog):
 		)
 		self.man = [
 			(
-				❤️❤️❤️❤️❤️❤️         \n
+				'❤️ ❤️ ❤️ ❤️ ❤️ ❤️         \n
 				'  ╔════╗           \n'
 				'  ║    ┴           \n'
 				'  ║                \n'
