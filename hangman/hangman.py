@@ -18,17 +18,7 @@ class Hangman(commands.Cog):
 			doEdit = True
 		)
 		self.man = [
-			(
-				'♥♥♥♥♥♥♥♥♥          \n'
-				'  ╔════╗           \n'
-				'  ║    ┴           \n'
-				'  ║                \n'
-				'  ║                \n'
-				'  ║                \n'
-				'  ║                \n'
-				'  ║                \n'
-				'▁▁█▁▁▁▁▁▁▁▁▁▁▁▁▁   \n'
-			), (                  
+			(                  
 				'♥♥♥♥♥♥♥♥           \n'               
 				'  ╔════╗           \n'
 				'  ║    ┴           \n'
@@ -36,8 +26,8 @@ class Hangman(commands.Cog):
 				'  ║                \n'
 				'  ║                \n'
 				'  ║                \n'
-				'  ║  █████         \n'
-				'▁▁█▁▁█▁▁▁█▁▁▁▁▁▁   \n'
+				'  ║  ▜▀▀▀▛         \n'
+				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁   \n'
 			), (                  
 				'♥♥♥♥♥♥♥            \n'
 				'  ╔════╗           \n'
@@ -195,7 +185,7 @@ class Hangman(commands.Cog):
 			guessed += t
 			if t not in word:
 				fails += 1
-				if fails == 9: #too many fails
+				if fails == 8: #too many fails
 					p = self._get_message(word, guessed)
 					p = f'```{self.man[fails]}\n{p}```Jocul s-a terminat.\n**Cuvântul era**: {word}.'
 					if doEdit:
