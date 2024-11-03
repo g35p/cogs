@@ -24,64 +24,64 @@ class Hangman(commands.Cog):
 				'  ║                \n'
 				'  ║                \n'
 				'  ║                \n'
-				'  ║  ▜▀▀▀▛         \n'
-				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  \n'
+				'  ║  ▜▀▀▀▛         Incercari ramase: 8\n'
+				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  ████████\n'
 			), (                  
 				'  ╔════╗           \n'
 				'  ║    │           \n'
 				'  ║    ☻           \n'
 				'  ║                \n'
 				'  ║                \n'
-				'  ║  ▜▀▀▀▛         \n'
-				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  \n'
+				'  ║  ▜▀▀▀▛         Incercari ramase: 7\n'
+				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  ███████░\n'
 			), (                  
 				'  ╔════╗           \n'
 				'  ║    │           \n'
 				'  ║    ☻           \n'
 				'  ║    ║           \n'
 				'  ║                \n'
-				'  ║  ▜▀▀▀▛         \n'
-				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  \n'
+				'  ║  ▜▀▀▀▛         Incercari ramase: 6\n'
+				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  ██████░░\n'
 			), (                  
 				'  ╔════╗           \n'
 				'  ║    │           \n'
 				'  ║   (☻           \n'
 				'  ║    ║           \n'
 				'  ║                \n'
-				'  ║  ▜▀▀▀▛         \n'
-				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  \n'
+				'  ║  ▜▀▀▀▛         Incercari ramase: 5\n'
+				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  █████░░░\n'
 			), (                  
 				'  ╔════╗           \n'
 				'  ║    │           \n'
 				'  ║   (☻)          \n'
 				'  ║    ║           \n'
 				'  ║                \n'
-				'  ║  ▜▀▀▀▛         \n'
-				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  \n'
+				'  ║  ▜▀▀▀▛         Incercari ramase: 4\n'
+				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  ████░░░░\n'
 			), (                  
 				'  ╔════╗           \n'
 				'  ║    │           \n'
 				'  ║   (☻)          \n'
 				'  ║    ║           \n'
 				'  ║   ╱            \n'
-				'  ║  ▜▀▀▀▛         \n'
-				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  \n'
+				'  ║  ▜▀▀▀▛         Incercari ramase: 3\n'
+				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  ███░░░░░\n'
 			), (                  
 				'  ╔════╗           \n'
 				'  ║    │           \n'
 				'  ║   (☻)          \n'
 				'  ║    ║           \n'
 				'  ║   ╱ ╲          \n'
-				'  ║  ▜▀▀▀▛         \n'
-				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  \n'
+				'  ║  ▜▀▀▀▛         Incercari ramase: 2\n'
+				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  ██░░░░░░\n'
 			), (                  
 				'  ╔════╗           \n'
 				'  ║    │           \n'
-				'  ║   (☻) ᴬʲᵘᵗᵒʳꜝ  \n'
+				'  ║   (☻)    \n'
 				'  ║    ║           \n'
 				'  ║   ╱ ╲          \n'
-				'  ║  ▜▀▀▀▛         \n'
-				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  \n'
+				'  ║  ▜▀▀▀▛         Incercari ramase: 1\n'
+				'▁▁█▁▁▟▁▁▁▙▁▁▁▁▁▁  █░░░░░░░\n'
 			), (                  
 				'  ╔════╗           \n'
 				'  ║    │   R.I.P   \n'
@@ -89,7 +89,7 @@ class Hangman(commands.Cog):
 				'  ║   /║\          \n'
 				'  ║   ╱ ╲          \n'
 				'  ║                \n'
-				'▁▁█▁▁▜▀▀▀▛▁▁▁▁▁▁  \n'
+				'▁▁█▁▁▜▀▀▀▛▁▁▁▁▁▁  ░░░░░░░░\n'
 		   	)
 		]
 
@@ -151,7 +151,7 @@ class Hangman(commands.Cog):
 				umsg = await self.bot.wait_for('message', check=check, timeout=60)
 			except asyncio.TimeoutError:
 				return await ctx.send(
-					f'Anulez jocul. Nu ai răspuns la timp..\n**Cuvântul era**: {word}.'
+					f'Anulez jocul. Nu ai răspuns la timp.. **Cuvântul era**: {word}.'
 				)
 			t = umsg.content.lower()
 			if doEdit:
@@ -169,7 +169,7 @@ class Hangman(commands.Cog):
 				fails += 1
 				if fails == 8: #too many fails
 					p = self._get_message(word, guessed)
-					p = f'```{self.man[fails]}\n{p}```Jocul s-a terminat.\n**Cuvântul era**: {word}.'
+					p = f'```{self.man[fails]}\n{p}```Jocul s-a terminat. **Cuvântul era**: {word}.'
 					if doEdit:
 						await boardmsg.edit(content=p)
 					else:
@@ -179,7 +179,7 @@ class Hangman(commands.Cog):
 			#guessed entire word
 			if not (set('abcdefghijklmnopqrstuvwxyz') & set(word)) - set(guessed):
 				p = self._get_message(word, guessed)
-				p = f'```{self.man[fails]}\n{p}```Ai câstigat!\n**Cuvântul era**: {word}.'
+				p = f'```{self.man[fails]}\n{p}```Ai câstigat! **Cuvântul era**: {word}.'
 				if doEdit:
 					await boardmsg.edit(content=p)
 				else:
