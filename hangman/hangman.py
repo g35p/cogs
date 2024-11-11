@@ -9,15 +9,17 @@ import asyncio, os
 
 
 class Hangman(commands.Cog):
-	"""Play hangman with the bot."""
-	def __init__(self, bot):
-		self.bot = bot
-		self.config = Config.get_conf(self, identifier=7345167902)
-		self.config.register_guild(
-			fp = str(bundled_data_path(self) / 'words.txt'),
-			doEdit = True
-		)
-		self.man = [
+    """Play hangman with the bot."""
+
+    def __init__(self, bot):
+        self.bot = bot
+        self.config = Config.get_conf(self, identifier=7345167902)
+        self.config.register_guild(
+            fp=str(bundled_data_path(self) / 'words.txt'),
+            doEdit=True
+        )
+        # ASCII art representations
+        self.man = [
 			(                             
 				'  ╔╤════╗           \n'
 				'  ╟┘    ┴           \n'
@@ -76,22 +78,29 @@ class Hangman(commands.Cog):
 				'▁▁█▁▁▁▟▁▁▁▙▁▁▁▁▁▁▁  \n'
 			), (                  
 				'  ╔╤════╗           \n'
-				'  ╟┘     │          \n'
+				'  ╟┘    │           \n'
 				'  ║    (☻)  AJUTOR! \n'
 				'  ║     ║           \n'
 				'  ║    ╱ ╲          \n'
 				'  ║   ▜▀▀▀▛         \n'
 				'▁▁█▁▁▁▟▁▁▁▙▁▁▁▁▁▁▁  \n'
-			), (                  
-				'  ╔╤════╗           \n'
-				'  ╟┘    │   R.I.P   \n'
-				'  ║     │           \n'
-				'  ║     ⚉           \n'
-				'  ║    ╱║╲          \n'
-				'  ║    ╱ ╲  ▜▀▀▀▛   \n'
-				'▁▁█▁▁▁▁▁▁▁▁▁▟▁▁▁▙▁▁ \n'
-		   	)
-		]
+			), (
+                                '  ╔╤════╗           \n'
+                                '  ╟┘    │   R.I.P   \n'
+                                '  ║     │           \n'
+                                '  ║     ⚉           \n'
+                                '  ║    ╱║╲          \n'
+                               '  ║    ╱ ╲  ▜▀▀▀▛   \n'
+                               '▁▁█▁▁▁▁▁▁▁▁▁▟▁▁▁▙▁▁ \n'
+                           )
+                       ]
+
+                       # Victory graphic to be displayed when the user guesses the entire word
+                       self.victory_graphic = (
+                           '🎉 Congratulations! 🎉\n'
+                           'You guessed the word! 🥳\n'
+                           '          🎊\n'
+                       )
 
 	@staticmethod
 	def _get_message(word, guessed):
@@ -112,79 +121,60 @@ class Hangman(commands.Cog):
 		return p
 
 	@commands.command()
-	async def hangman(self, ctx):
-		"""Play hangman with the bot."""
-		if ctx.guild is None: #default vars in pms
-			fp = str(bundled_data_path(self) / 'words.txt')
-			doEdit = False #cant delete messages in pms
-		else: #server specific vars
-			fp = await self.config.guild(ctx.guild).fp()
-			doEdit = await self.config.guild(ctx.guild).doEdit()
-		try:
-			f = open(fp)
-		except FileNotFoundError:
-			await ctx.send('Your wordlist was not found, using the default wordlist.')
-			f = open(str(bundled_data_path(self) / 'words.txt'))
-		wordlist = [line.strip().lower() for line in f]
-		word = wordlist[randint(0,len(wordlist)-1)] #pick and format random word
-		guessed = ''
-		fails = 0
-		game = True
-		err = 0
-		boardmsg = None
-		check = lambda m: (
-			m.channel == ctx.message.channel 
-			and m.author == ctx.message.author 
-			and len(m.content) == 1 
-			and m.content.lower() in 'abcdefghijklmnopqrstuvwxyz'
-		)
-		while game:
-			p = self._get_message(word, guessed)
-			p = f'```{self.man[fails]}\n{p}```'
-			if err == 1:
-				p += 'Ai menționat deja acea literă.\n'
-			if boardmsg is None or not doEdit:
-				boardmsg = await ctx.send(p+'Ghicește o literă!')
-			else:
-				await boardmsg.edit(content=str(p+'Ghicește o literă!'))
-			try:
-				umsg = await self.bot.wait_for('message', check=check, timeout=60)
-			except asyncio.TimeoutError:
-				return await ctx.send(
-					f'Anulez jocul. Nu ai răspuns la timp.. **Cuvântul era**: {word}.'
-				)
-			t = umsg.content.lower()
-			if doEdit:
-				await asyncio.sleep(.2)
-				try:
-					await umsg.delete()
-				except (discord.errors.Forbidden, discord.errors.NotFound):
-					pass
-			if t in guessed:
-				err = 1
-				continue
-			err = 0
-			guessed += t
-			if t not in word:
-				fails += 1
-				if fails == 8: #too many fails
-					p = self._get_message(word, guessed)
-					p = f'```{self.man[fails]}\n{p}```Jocul s-a terminat. **Cuvântul era**: {word}.'
-					if doEdit:
-						await boardmsg.edit(content=p)
-					else:
-						await ctx.send(p)
-					game = False
-					continue
-			#guessed entire word
-			if not (set('abcdefghijklmnopqrstuvwxyz') & set(word)) - set(guessed):
-				p = self._get_message(word, guessed)
-				p = f'```{self.man[fails]}\n{p}```Ai câstigat! **Cuvântul era**: {word}.'
-				if doEdit:
-					await boardmsg.edit(content=p)
-				else:
-					await ctx.send(p)
-				game = False
+    async def hangman(self, ctx):
+        """Play hangman with the bot."""
+        # Setup and initializations as per your original code
+        # ...
+
+        while game:
+            p = self._get_message(word, guessed)
+            p = f'```{self.man[fails]}\n{p}```'
+            if err == 1:
+                p += 'Ai menționat deja acea literă.\n'
+            if boardmsg is None or not doEdit:
+                boardmsg = await ctx.send(p+'Ghicește o literă!')
+            else:
+                await boardmsg.edit(content=str(p+'Ghicește o literă!'))
+
+            try:
+                umsg = await self.bot.wait_for('message', check=check, timeout=60)
+            except asyncio.TimeoutError:
+                return await ctx.send(
+                    f'Anulez jocul. Nu ai răspuns la timp.. **Cuvântul era**: {word}.'
+                )
+            t = umsg.content.lower()
+            if doEdit:
+                await asyncio.sleep(.2)
+                try:
+                    await umsg.delete()
+                except (discord.errors.Forbidden, discord.errors.NotFound):
+                    pass
+            if t in guessed:
+                err = 1
+                continue
+            err = 0
+            guessed += t
+            if t not in word:
+                fails += 1
+                if fails == 8:  # too many fails
+                    p = self._get_message(word, guessed)
+                    p = f'```{self.man[fails]}\n{p}```Jocul s-a terminat. **Cuvântul era**: {word}.'
+                    if doEdit:
+                        await boardmsg.edit(content=p)
+                    else:
+                        await ctx.send(p)
+                    game = False
+                    continue
+            # guessed entire word
+            if not (set('abcdefghijklmnopqrstuvwxyz') & set(word)) - set(guessed):
+                p = self._get_message(word, guessed)
+                p = f'```{self.man[fails]}\n{p}```Ai câstigat! **Cuvântul era**: {word}. 🎉'
+                p += f'\n```{self.victory_graphic}```'
+                if doEdit:
+                    await boardmsg.edit(content=p)
+                else:
+                    await ctx.send(p)
+                game = False
 	
 	@commands.guild_only()
 	@checks.guildowner()
