@@ -99,6 +99,16 @@ class Nsfw(Core):
     @commands.is_nsfw()
     @commands.bot_has_permissions(embed_links=True)
     @commands.cooldown(1, 0.5, commands.BucketType.user)
+    @commands.command(aliases=["nsfunny"])
+    async def nslol(self, ctx: commands.Context):
+        """Sends some funny nsfw images and videos."""
+
+        await self._send_msg(ctx, "lol porn", sub.nslol)
+        
+
+    @commands.is_nsfw()
+    @commands.bot_has_permissions(embed_links=True)
+    @commands.cooldown(1, 0.5, commands.BucketType.user)
     @commands.command(aliases=["sodomy"])
     async def anal(self, ctx: commands.Context):
         """Sends some anal images/gifs from random subreddits."""
