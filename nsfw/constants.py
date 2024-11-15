@@ -181,7 +181,6 @@ FEET = [
     "rule34feet",
 ]
 FEMDOM = ["Femdom", "FemdomHumiliation", "femdom", "hentaifemdom"]
-NSLOL = ["bordeldoreddit"]
 FUTA = [
     "FutanariHentai",
     "FutanariPegging",
@@ -212,6 +211,7 @@ MILF = [
     "maturemilf",
     "milf",
 ]
+NSLOL = ["bordeldoreddit"]
 ORAL = [
     "AsianBlowjobs",
     "Blowjobs",
