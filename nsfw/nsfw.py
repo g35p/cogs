@@ -103,7 +103,7 @@ class Nsfw(Core):
     async def nslol(self, ctx: commands.Context):
         """Sends some funny nsfw images and videos."""
 
-        await self._send_msg(ctx, "lol porn", sub.nslol)
+        await self._send_msg(ctx, "lol porn", sub.NSLOL)
         
 
     @commands.is_nsfw()
