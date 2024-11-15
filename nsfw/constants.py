@@ -181,7 +181,7 @@ FEET = [
     "rule34feet",
 ]
 FEMDOM = ["Femdom", "FemdomHumiliation", "femdom", "hentaifemdom"]
-LOLPORN = ["bordeldoreddit"]
+NSLOL = ["bordeldoreddit"]
 FUTA = [
     "FutanariHentai",
     "FutanariPegging",
