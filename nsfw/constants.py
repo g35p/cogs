@@ -28,7 +28,7 @@ NOT_EMBED_DOMAINS = (
     "imgur.com/a/",
     ".gifv",
 )
-GOOD_EXTENSIONS = (".png", ".jpg", ".jpeg", ".gif", "gifv")
+GOOD_EXTENSIONS = (".png", ".jpg", ".jpeg", ".gif", "gifv", ".webp")
 
 # Subreddits
 FOUR_K = [
