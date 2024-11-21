@@ -211,7 +211,7 @@ MILF = [
     "maturemilf",
     "milf",
 ]
-NSLOL = ["bordeldoreddit", "ScaryBilbo", "gonecivil","PornoMemes"]
+NSLOL = ["bordeldoreddit", "gonecivil"]
 ORAL = [
     "AsianBlowjobs",
     "Blowjobs",
