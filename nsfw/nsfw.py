@@ -103,9 +103,8 @@ class Nsfw(Core):
     async def nslol(self, ctx: commands.Context):
         """Sends some funny nsfw images and videos."""
 
-        await self._send_msg(ctx, "ns lol", sub.NSLOL)
+        await self._send_msg(ctx, "nsfw lol", sub.NSLOL)
         
-
     @commands.is_nsfw()
     @commands.bot_has_permissions(embed_links=True)
     @commands.cooldown(1, 0.5, commands.BucketType.user)
