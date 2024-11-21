@@ -85,7 +85,7 @@ class Core(commands.Cog):
                         return url, subr
                 else:
                     async with self.session.get(
-                        MARTINE_API_BASE_URL, params={"name": sub}
+                    MARTINE_API_BASE_URL, params={"name": sub, "top_type": "year"}
                     ) as resp:
                         if resp.status != 200:
                             tries += 1
