@@ -140,7 +140,7 @@ class Core(commands.Cog):
     async def _make_embed(self, ctx: commands.Context, subs: List[str], name: str):
         """Function to make the embed for all Reddit API images."""
         try:
-            url, subr = await asyncio.wait_for(self._get_imgs(subs=subs), 10)
+            url, subr = await asyncio.wait_for(self._get_imgs(subs=subs), 5)
         except asyncio.TimeoutError:
             await ctx.send("Failed to get an image. Please try again later. (Timeout error)")
             return
@@ -177,7 +177,7 @@ class Core(commands.Cog):
     ):
         """Function to make the embed for all others APIs images."""
         try:
-            data = await asyncio.wait_for(self._get_others_imgs(ctx, url=url), 10)
+            data = await asyncio.wait_for(self._get_others_imgs(ctx, url=url), 5)
         except asyncio.TimeoutError:
             await ctx.send("Failed to get an image. Please try again later. (Timeout error)")
             return
