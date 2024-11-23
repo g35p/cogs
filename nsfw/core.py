@@ -37,7 +37,7 @@ class Core(commands.Cog):
         self.session = aiohttp.ClientSession(
             headers={
                 "User-Agent": (
-                    f"Red-DiscordBot PredaCogs-Nsfw/{self.__version__} "
+                    f"Red-DiscordBot NSFW Cog/{self.__version__} "
                     f"(Python/{'.'.join(map(str, sys.version_info[:3]))} aiohttp/{aiohttp.__version__})"
                 )
             }
